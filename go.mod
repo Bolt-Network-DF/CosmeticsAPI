@@ -2,11 +2,12 @@ module github.com/Bolt-Network-DF/CosmeticsAPI
 
 go 1.21
 
+require github.com/df-mc/dragonfly v0.9.15
+
 require (
 	github.com/brentp/intintmap v0.0.0-20190211203843-30dc0ade9af9 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/df-mc/atomic v1.10.0 // indirect
-	github.com/df-mc/dragonfly v0.9.15 // indirect
 	github.com/df-mc/goleveldb v1.1.9 // indirect
 	github.com/df-mc/worldupgrader v1.0.13 // indirect
 	github.com/go-gl/mathgl v1.1.0 // indirect
@@ -16,8 +17,6 @@ require (
 	github.com/google/uuid v1.4.0 // indirect
 	github.com/klauspost/compress v1.15.15 // indirect
 	github.com/muhammadmuzzammil1998/jsonc v1.0.0 // indirect
-	github.com/pelletier/go-toml v1.9.5 // indirect
-	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/sandertv/go-raknet v1.12.0 // indirect
 	github.com/sandertv/gophertunnel v1.36.0 // indirect
 	github.com/segmentio/fasthash v1.0.3 // indirect
