@@ -1,4 +1,4 @@
-module github.com/Bolt-Network/CosmeticsAPI
+module github.com/Bolt-Network-DF/CosmeticsAPI
 
 go 1.21
 

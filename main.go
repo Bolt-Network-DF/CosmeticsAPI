@@ -2,7 +2,7 @@ package main
 
 import (
 	"errors"
-	"github.com/Bolt-Network/CosmeticsAPI/utils"
+	"github.com/Bolt-Network-DF/CosmeticsAPI/utils"
 	"github.com/df-mc/dragonfly/server/player"
 	"github.com/df-mc/dragonfly/server/player/skin"
 )
