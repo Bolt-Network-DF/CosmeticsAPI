@@ -50,6 +50,26 @@ func NewCosmeticsManager() *CosmeticsManager {
 	}
 }
 
+// GetCapes ...
+func (cm *CosmeticsManager) GetCapes() map[string]skin.Cape {
+	return cm.capes
+}
+
+// GetWings ...
+func (cm *CosmeticsManager) GetWings() map[string]struct {
+	return cm.wings
+}
+
+// GetHats ...
+func (cm *CosmeticsManager) GetHats() map[string]struct {
+	return cm.hats
+}
+
+// GetLegs ...
+func (cm *CosmeticsManager) GetLegs() map[string]struct {
+	return cm.legs
+}
+
 // RegisterCape registers a cape with a given name and path.
 func (cm *CosmeticsManager) RegisterCape(name, path string) error {
 	if _, ok := cm.capes[name]; !ok {
