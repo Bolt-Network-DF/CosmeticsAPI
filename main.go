@@ -2,14 +2,15 @@ package cosmetic
 
 import (
 	"fmt"
+	"image"
+	"image/draw"
+	"sync"
+
 	"github.com/Bolt-Network-DF/CosmeticsAPI/utils"
 	"github.com/anthonynsimon/bild/blend"
 	"github.com/anthonynsimon/bild/transform"
 	"github.com/df-mc/dragonfly/server/player"
 	"github.com/df-mc/dragonfly/server/player/skin"
-	"image"
-	"image/draw"
-	"sync"
 )
 
 var originalSkins sync.Map
@@ -57,16 +58,25 @@ func (cm *CosmeticsManager) GetCapes() map[string]skin.Cape {
 
 // GetWings ...
 func (cm *CosmeticsManager) GetWings() map[string]struct {
+	Texture  image.Image
+	Geometry []byte
+} {
 	return cm.wings
 }
 
 // GetHats ...
 func (cm *CosmeticsManager) GetHats() map[string]struct {
+	Texture  image.Image
+	Geometry []byte
+} {
 	return cm.hats
 }
 
 // GetLegs ...
 func (cm *CosmeticsManager) GetLegs() map[string]struct {
+	Texture  image.Image
+	Geometry []byte
+} {
 	return cm.legs
 }
 
@@ -76,7 +86,7 @@ func (cm *CosmeticsManager) RegisterCape(name, path string) error {
 		cm.capes[name] = utils.ReadCapeData(path)
 		return nil
 	}
-	
+
 	return fmt.Errorf("cape %s already registered", name)
 }
 
