@@ -179,23 +179,29 @@ func (cm *CosmeticsManager) registerCosmetic(cosmeticMap map[string]struct {
 
 // setCosmetic sets the cosmetic for the player.
 func (cm *CosmeticsManager) setCosmetic(p *player.Player, cosmeticMap map[string]struct {
-	Texture  image.Image
-	Geometry []byte
+    Texture  image.Image
+    Geometry []byte
 }, name string) error {
-	cosmetic, ok := cosmeticMap[name]
-	if !ok {
-		return fmt.Errorf("%s %v not registered", name)
-	}
+    cosmetic, ok := cosmeticMap[name]
+    if !ok {
+        return fmt.Errorf("%s %v not registered", name)
+    }
 
-	s := p.Skin()
-	img := blend.Add(transform.Resize(utils.GetImageFromSkin(s), 128, 128, transform.NearestNeighbor), cosmetic.Texture)
-	rgba := image.NewRGBA(img.Bounds())
-	draw.Draw(rgba, img.Bounds(), img, img.Bounds().Min, draw.Src)
-	s.Pix = rgba.Pix
-	s.Model = cosmetic.Geometry
-	p.SetSkin(s)
+    s := p.Skin()
+    img := blend.Add(transform.Resize(utils.GetImageFromSkin(s), 128, 128, transform.NearestNeighbor), cosmetic.Texture)
+    rgba := image.NewRGBA(img.Bounds())
+    draw.Draw(rgba, img.Bounds(), img, img.Bounds().Min, draw.Src)
+    c := skin.New(img.Bounds().Dx(), img.Bounds().Dy())
+    c.Persona = false
+    c.PlayFabID = s.PlayFabID
+    c.Pix = rgba.Pix
+    c.ModelConfig = s.ModelConfig
+    c.Model = cosmetic.Geometry
+    c.Cape = s.Cape
+    c.Animations = s.Animations
+    p.SetSkin(c)
 
-	return nil
+    return nil
 }
 
 // storeOriginalSkin stores the original skin of the player before applying cosmetics.
